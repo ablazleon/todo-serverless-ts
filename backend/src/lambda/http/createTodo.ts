@@ -8,6 +8,12 @@ import { getUserIdFromEvent } from '../../auth/utils'
 import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import {TodoAccess} from "../../utils/TodoAccess";
 
+/**
+ * Creeate a todo
+ */
+
+const todoAccess = new TodoAccess();
+
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const newTodo: CreateTodoRequest = JSON.parse(event.body)
 
