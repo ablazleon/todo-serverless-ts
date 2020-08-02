@@ -300,7 +300,11 @@ THe steps I did were the following:
     a. npm install -g serverless
     b. Set up a new user in IAM named "serverless" and save the access key and secret key
     c. sls config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR_SECRET_KEY --profile serverless
-2. Create the CRUD functions
+3. Set up a custom authorizer
+    a. Create an app in autho 0.
+    b. PUt the certificate into the jwturl of the handler implemented
+4. Set the serverless.yml resources
+5. Create the CRUD functions
 
 
 ## What I did: rubric accomplishment
