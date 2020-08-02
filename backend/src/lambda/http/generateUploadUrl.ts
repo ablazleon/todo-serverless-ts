@@ -21,7 +21,7 @@ import {TodoAccess} from "../../utils/TodoAccess";
 const todoAccess = new TodoAccess();
 
 /**
- * Delete a todo
+ * Generate a signed url to upload images to s3
  */
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const todoId = event.pathParameters.todoId
