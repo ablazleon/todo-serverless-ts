@@ -295,7 +295,11 @@ In this project I learnt how to implement a webapp in serverless framework. Whic
 
 THe steps I did were the following:
 
-1. Run frontend 
+1. Run frontend: it is checked it is needed to implement initial login
+2. Setup serverless framework
+    a. npm install -g serverless
+    b. Set up a new user in IAM named "serverless" and save the access key and secret key
+    c. sls config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR_SECRET_KEY --profile serverless
 2. Create the CRUD functions
 
 
