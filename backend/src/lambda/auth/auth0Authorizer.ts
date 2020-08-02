@@ -12,7 +12,7 @@ const logger = createLogger('auth')
 // TODO: Provide a URL that can be used to download a certificate that can be used
 // to verify JWT token signature.
 // To get this URL you need to go to an Auth0 page -> Show Advanced Settings -> Endpoints -> JSON Web Key Set
-const jwksUrl = '...'
+const jwksUrl = 'https://dev-vip6ypq3.eu.auth0.com/.well-known/jwks.json'
 
 export const handler = async (
   event: CustomAuthorizerEvent
@@ -54,6 +54,10 @@ export const handler = async (
   }
 }
 
+/*
+This method takes an authHeader and returns a promise
+This promise verifies if the token that the authHeader has, is signed with the public key determined by the jwksUrl
+*/
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
   const token = getToken(authHeader)
   const jwt: Jwt = decode(token, { complete: true }) as Jwt
@@ -61,8 +65,23 @@ async function verifyToken(authHeader: string): Promise<JwtPayload> {
   // TODO: Implement token verification
   // You should implement it similarly to how it was implemented for the exercise for the lesson 5
   // You can read more about how to do this here: https://auth0.com/blog/navigating-rs256-and-jwks/
-  return undefined
+
+  const jwksRqt = await request({
+    uri: jwksUrl,
+    strictSsl: true,
+    json: true
+  }).promise();
+
+  const jwks = jwksRqt.keys;
+
+    const signingKeys = jwks.map(key => {
+    return { kid: key.kid, nbf: key.nbf, publicKey: certToPEM(key.x5c[0]) };
+  });
+  const signingKey = signingKeys[0].publicKey;
+
+  return verify(token, signingKey, {algorithms: ['RS256']}) as JwtPayload;
 }
+
 
 function getToken(authHeader: string): string {
   if (!authHeader) throw new Error('No authentication header')
