@@ -293,6 +293,12 @@ Provide variables for the collection (similarly to how this was done in the cour
 
 In this project I learnt how to implement a webapp in serverless framework. Which maybe much cheaper than using containers on a deployed kubernetes cluster.
 
+THe steps I did were the following:
+
+1. Run frontend 
+2. Create the CRUD functions
+
+
 ## What I did: rubric accomplishment
 
 
