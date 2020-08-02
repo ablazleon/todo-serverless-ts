@@ -2,7 +2,8 @@
 
 Serverless to-do app
 
-<img src="http://yuml.me/diagram/scruffy/class/[Frontend]<->[Backend], [Backend]<->[Auth, CreateTodo, UpdateTodo, GetTodos, DeleteTodo, GenerateUploadUrl{bg:wheat}], [Backend]<->[DB (Dynamo DB, TODOs)]" >
+<img src="http://yuml.me/diagram/plain/class/[Frontend]<->[Backend], [Backend]<->[Auth, CreateTodo, UpdateTodo, GetTodos, DeleteTodo, GenerateUploadUrl{bg:wheat}], [Backend]<->[DB (Dynamo DB, TODOs)]" >
+
 
 ***Credits***
 Udacity Cloud Developer Nanodegree Program
