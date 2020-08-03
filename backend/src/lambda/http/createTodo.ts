@@ -18,8 +18,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const userId = getUserIdFromEvent(event);
 
   // TODO: Implement creating a new TODO item
-
-  const newTodo: CreateTodoRequest = JSON.parse(event.body);
   const todoId = await todoAccess.createTodo(userId, newTodo);
 
   return {
