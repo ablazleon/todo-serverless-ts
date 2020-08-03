@@ -3,7 +3,6 @@ import 'source-map-support/register'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
 import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { getUserIdFromEvent } from '../../auth/utils'
-import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import {TodoAccess} from "../../utils/TodoAccess";
 
 /**

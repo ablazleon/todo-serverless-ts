@@ -1,7 +1,7 @@
 import { decode } from 'jsonwebtoken'
 
 import { JwtPayload } from './JwtPayload'
-
+import {APIGatewayProxyEvent} from "aws-lambda";
 /**
  * Parse a JWT token and return a user id
  * @param jwtToken JWT token to parse
