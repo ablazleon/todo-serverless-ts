@@ -7,15 +7,15 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
 
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
 
   environment:
-    TODOITEM_TABLE: Todoitem-pec-${self:provider.stage}
+    TODOITEM_TABLE: Todoitem-abl-${self:provider.stage}
     TODOITEM_TABLE_GSI: byUserIdGsi
-    TODOITEM_S3_BUCKET_NAME: todoitem-pec-attachments-${self:provider.stage}
+    TODOITEM_S3_BUCKET_NAME: todoitem-abl-attachments-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
 
   tracing:
