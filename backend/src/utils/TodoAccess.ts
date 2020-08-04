@@ -10,8 +10,9 @@ const logger = createLogger('todoAccess');
 
 const bucketName = process.env.TODOITEM_S3_BUCKET_NAME;
 
-const XAWS = AWSXRay.captureAWS(AWS);
 const AWSXRay = require('aws-xray-sdk');
+const XAWS = AWSXRay.captureAWS(AWS);
+
 /**
  * TodoAccess allow facing with the data resources as the db and image.
  */
