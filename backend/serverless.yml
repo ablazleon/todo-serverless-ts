@@ -6,6 +6,20 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
 
+  documentation:
+    api:
+      info:
+        version: v1.0.0
+        title: ToDos API
+        description: serverless api for ToDo application
+    models:
+      - name: CreateTodo
+        contentType: application/json
+        schema: ${file(src/validators/create-todo-request.json)}
+      - name: UpdateTodo
+        contentType: application/json
+        schema: ${file(src/validators/update-todo-request.json)}
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -103,6 +117,12 @@ functions:
           path: todos/{todoId}
           authorizer: Auth
           cors: true
+          reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: update a todo item
+            description: update a todo item
+            requestModels:
+              'application/json': UpdateTodo
     iamRoleStatements:
       - Effect: Allow
         Action:
