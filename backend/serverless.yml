@@ -66,6 +66,9 @@ functions:
           path: todos
           authorizer: Auth
           cors: true
+          request:
+            schema:
+              application/json: ${file(models/TodoItem.ts)}
     iamRoleStatements:
       - Effect: Allow
         Action:
