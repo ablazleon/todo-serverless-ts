@@ -25,6 +25,7 @@ const todoAccess = new TodoAccess();
  */
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const todoId = event.pathParameters.todoId
+  const userId = event.pathParameters.userId
   const attachmentId = uuid.v4();
 
   logger.info("Generated upload URL:", {
@@ -39,7 +40,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   });
 
   // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
-  await todoAccess.updateTodoAttachmentUrl(todoId, attachmentId);
+  await todoAccess.updateTodoAttachmentUrl(todoId, userId, attachmentId);
 
   return {
     statusCode: 200,

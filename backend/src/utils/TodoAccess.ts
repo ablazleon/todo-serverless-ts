@@ -102,13 +102,14 @@ export class TodoAccess {
 
     }
 
-    async updateTodoAttachmentUrl(todoId: string, attachmentUrl: string){
+    async updateTodoAttachmentUrl(todoId: string, userId: string, attachmentUrl: string){
 
         logger.info(`Updating todoId ${todoId} with attachmentUrl ${attachmentUrl}`)
 
         await this.docClient.update({
             TableName: this.todoTable,
             Key: {
+                "userId": userId,
                 "todoId": todoId
             },
             UpdateExpression: "set attachmentUrl = :attachmentUrl",
