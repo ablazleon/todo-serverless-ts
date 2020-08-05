@@ -35,7 +35,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const uploadUrl = s3.getSignedUrl('putObject', {
     Bucket: bucketName,
     Key: attachmentId,
-    Expires: urlExpiration
+    Expires: parseInt(urlExpiration)
   });
 
   // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
