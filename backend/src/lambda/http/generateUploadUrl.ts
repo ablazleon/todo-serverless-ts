@@ -5,6 +5,8 @@ import * as uuid from 'uuid';
 import * as AWS from 'aws-sdk';
 import * as AWSXRay from "aws-xray-sdk";
 
+import { getUserId } from '../utils'
+
 import { createLogger } from '../../utils/logger'
 const logger = createLogger('generateUploadUrl')
 
@@ -25,7 +27,7 @@ const todoAccess = new TodoAccess();
  */
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const todoId = event.pathParameters.todoId
-  const userId = event.pathParameters.userId
+  const userId = getUserId(event);
   const attachmentId = uuid.v4();
 
   logger.info("Generated upload URL:", {
